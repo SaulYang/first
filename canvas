@@ -26,10 +26,10 @@
 </head>
 <body>
 
-<button>Update</button>
+
 
 <canvas></canvas>
-
+<button>update</button>
 <script>
     var btn = document.querySelector('button');
     var canvas = document.querySelector('canvas');
@@ -41,17 +41,23 @@
     function random(number) {
         return Math.floor(Math.random()*number);
     }
+    function ccs(e) {
+
+        return Math.random()*0.2*e+0.4
+    }
     function draw() {
         ctx.clearRect(0,0,WIDTH,HEIGHT);
         for(var i = 0; i < 100; i++) {
             ctx.beginPath();
-            ctx.fillStyle = 'rgba(155,200,201,0.6)';
+            var rndCol = 'rgba(' + random(255) + ',' + random(255) + ',' + random(255) + ','+ccs(1)+')';
+            ctx.fillStyle = rndCol;
             ctx.arc(random(WIDTH), random(HEIGHT), random(50), 0, 2 * Math.PI);
             ctx.fill();
         }
     }
+
     btn.addEventListener('click',draw);
-setInterval('draw()',1000)
+    setInterval('draw()',1000)
 
 </script>
 
